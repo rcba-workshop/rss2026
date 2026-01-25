@@ -1,8 +1,8 @@
 # Call for Presentations
 
-## RSS Workshop: From Perception to Action
+## From Perception to Action: Representation-Centric Robot Autonomy
 
-We invite submissions for presentations at the RSS Workshop: From Perception to Action.
+We invite submissions for presentations at From Perception to Action: Representation-Centric Robot Autonomy.
 
 ## Submission Guidelines
 
