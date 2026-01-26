@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="From Perception to Action: Representation-Centric Robot Autonomy - Closing the loop between sensing, understanding, planning, and execution" />
+  <title>From Perception to Action: Representation-Centric Robot Autonomy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 20px;
+      flex: 1;
+    }
+    
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    
+    h1 {
+      font-size: 2.8em;
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 30px;
+      line-height: 1.2;
+    }
+    
+    .conference-info {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    
+    .conference-logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .rss-logo-img {
+      max-width: 400px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+    
+    .rss-logo {
+      font-size: 2.5em;
+      font-weight: 700;
+      color: #6c5ce7;
+      letter-spacing: 2px;
+    }
+    
+    .rss-text {
+      font-size: 0.7em;
+      color: #7f8c8d;
+      text-align: center;
+      max-width: 200px;
+    }
+    
+    .workshop-year {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    .year-number {
+      font-size: 2.2em;
+      font-weight: 700;
+      color: #e74c3c;
+    }
+    
+    .year-text {
+      font-size: 0.9em;
+      color: #7f8c8d;
+      font-weight: 500;
+    }
+    
+    .location-date {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #555;
+      font-size: 1.1em;
+    }
+    
+    .info-icon {
+      font-size: 1.2em;
+    }
+    
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+    
+    .nav-button {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      font-size: 0.8em;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      min-width: 90px;
+    }
+    
+    .nav-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+    
+    .nav-button-icon {
+      font-size: 1.2em;
+      margin-bottom: 4px;
+    }
+    
+    .nav-button.speakers {
+      background: linear-gradient(135deg, #e74c3c, #c0392b);
+    }
+    
+    .nav-button.organizers {
+      background: linear-gradient(135deg, #f39c12, #e67e22);
+    }
+    
+    .nav-button.schedule {
+      background: linear-gradient(135deg, #3498db, #2980b9);
+    }
+    
+    .nav-button.contact {
+      background: linear-gradient(135deg, #27ae60, #229954);
+    }
+    
+    /* Section styles for content pages */
+    main {
+      margin-bottom: 40px;
+    }
+    
+    section {
+      margin-bottom: 40px;
+    }
+    
+    h2 {
+      font-size: 2em;
+      margin-bottom: 25px;
+      color: #2c3e50;
+      padding-bottom: 10px;
+      border-bottom: 3px solid #3498db;
+    }
+    
+    h3 {
+      font-size: 1.4em;
+      margin-bottom: 15px;
+      margin-top: 25px;
+      color: #34495e;
+    }
+    
+    p {
+      margin-bottom: 15px;
+      text-align: justify;
+      font-size: 1.05em;
+    }
+    
+    ul {
+      margin-left: 30px;
+      margin-bottom: 20px;
+    }
+    
+    li {
+      margin-bottom: 10px;
+      font-size: 1.05em;
+    }
+    
+    a {
+      color: #3498db;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    a:hover {
+      color: #2980b9;
+      text-decoration: underline;
+    }
+    
+    .keynote-speakers {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
+    }
+    
+    .speaker-card {
+      background-color: #f8f9fa;
+      padding: 25px;
+      border-radius: 10px;
+      border: 1px solid #e0e0e0;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .speaker-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+    
+    .speaker-name {
+      font-size: 1.3em;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 8px;
+    }
+    
+    .speaker-affiliation {
+      color: #7f8c8d;
+      font-size: 1em;
+      margin-bottom: 12px;
+    }
+    
+    .speaker-bio {
+      color: #555;
+      font-size: 0.95em;
+      line-height: 1.6;
+    }
+    
+    .organizers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      margin-top: 30px;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    @media (max-width: 768px) {
+      .organizers-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .organizers-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .organizer-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .organizer-photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 12px;
+      object-fit: cover;
+      background-color: #e0e0e0;
+      margin-bottom: 15px;
+      border: 2px solid #f0f0f0;
+    }
+    
+    .organizer-name {
+      font-size: 1.1em;
+      font-weight: 600;
+      color: #3498db;
+      margin-bottom: 5px;
+    }
+    
+    .organizer-title {
+      font-size: 0.9em;
+      color: #555;
+      margin-bottom: 3px;
+    }
+    
+    .organizer-affiliation {
+      font-size: 0.9em;
+      color: #777;
+    }
+    
+    .contact-info {
+      background-color: #f8f9fa;
+      padding: 25px;
+      border-radius: 10px;
+      border-left: 4px solid #3498db;
+    }
+    
+    footer {
+      margin-top: 80px;
+      padding: 30px 20px;
+      border-top: 1px solid #e0e0e0;
+      text-align: center;
+      color: #7f8c8d;
+      font-size: 0.9em;
+    }
+    
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+      }
+      
+      .container {
+        padding: 40px 15px;
+      }
+      
+      .conference-info {
+        gap: 20px;
+      }
+      
+      .nav-buttons {
+        grid-template-columns: 1fr;
+      }
+      
+      .location-date {
+        flex-direction: column;
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>FROM PERCEPTION TO ACTION:<br>REPRESENTATION-CENTRIC ROBOT AUTONOMY</h1>
+      
+      <div class="conference-info">
+        <div class="conference-logo">
+          <img src="assets/RSS2026-logo.jpg" alt="RSS 2026 Logo" class="rss-logo-img">
+        </div>
+      </div>
+      
+      <div class="location-date">
+        <div class="info-item">
+          <span class="info-icon">📍</span>
+          <span>Sydney, Australia</span>
+        </div>
+        <div class="info-item">
+          <span class="info-icon">📅</span>
+          <span>July 13–17, 2026</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="nav-buttons">
+      <a href="#speakers" class="nav-button speakers">
+        <div class="nav-button-icon">👤</div>
+        <div>Speakers</div>
+      </a>
+      <a href="#organizers" class="nav-button organizers">
+        <div class="nav-button-icon">👥</div>
+        <div>Organizers</div>
+      </a>
+      <a href="#schedule" class="nav-button schedule">
+        <div class="nav-button-icon">📅</div>
+        <div>Schedule</div>
+      </a>
+      <a href="#contact" class="nav-button contact">
+        <div class="nav-button-icon">✉️</div>
+        <div>Contact</div>
+      </a>
+    </div>
+
+    <main>
+      <section id="overview">
+        <h2>Overview</h2>
+        <p>
+          This workshop focuses on the central role of representations in shaping the performance, scalability, and reliability of autonomous robotic systems. 
+          While perception, mapping, planning, and decision making are often studied as separate components, 
+          the choice of scene and map representations fundamentally couples these modules and directly influences 
+          downstream robot behavior. This workshop aims to bring together researchers who study how representation 
+          design: geometric, probabilistic, dense, implicit, or learned, affects the entire autonomy pipeline, 
+          from sensing and localization to planning, navigation, manipulation, and exploration.
+        </p>
+        <p>
+          The workshop targets an audience spanning multiple robotics sub-communities, including SLAM and mapping, 
+          robot perception, motion planning, decision making, manipulation, and autonomous navigation. We particularly 
+          encourage participation from researchers working on dense and implicit map representations (e.g., occupancy 
+          grids, signed distance fields, Gaussian splatting, neural fields), task-aware perception and mapping, 
+          active and informative planning, and joint optimization of perception and decision processes. Presenters and 
+          panelists will be drawn from both geometry- and learning-oriented communities, as well as from researchers 
+          bridging classical model-based methods with modern data-driven approaches.
+        </p>
+        <p>
+          The relevance of this workshop lies in providing a focused forum to examine how different map representations 
+          impact core robotic tasks. As robotic systems are deployed in increasingly diverse environments, practitioners 
+          are faced with a wide range of representation choices, each offering distinct advantages and limitations for 
+          downstream tasks. By centering the discussion on representation design and its practical implications, this 
+          workshop aims to compare how different representations support or constrain localization accuracy, planning 
+          efficiency, decision robustness, and exploration strategies. Rather than advocating a single representation 
+          paradigm, the workshop seeks to clarify trade-offs, failure modes, and task-dependent requirements, and to 
+          identify open problems in aligning representations with the needs of closed-loop autonomy. We expect the 
+          discussions to help researchers and practitioners make more informed representation choices and to inspire 
+          future work on task-aware mapping and perception for autonomous robotic systems.
+        </p>
+      </section>
+
+      <section id="topics">
+        <h2>Topics of Interest</h2>
+        <ul>
+          <li>Perception and sensing in robotics</li>
+          <li>Spatial understanding and scene comprehension</li>
+          <li>Planning and decision-making</li>
+          <li>Action execution and control</li>
+          <li>End-to-end learning systems</li>
+          <li>Multi-modal integration</li>
+          <li>Real-world applications and case studies</li>
+        </ul>
+      </section>
+
+      <section id="speakers">
+        <h2>Keynote Speakers</h2>
+        <div class="placeholder-text">
+          Keynote speakers will be announced soon.
+        </div>
+      </section>
+
+      <section id="organizers">
+        <h2>Organizers</h2>
+        <div class="organizers-grid">
+          <div class="organizer-card">
+            <img src="assets/organizers/xingxing-zuo.jpg" alt="Lan Wu" class="organizer-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div style="display:none; width:180px; height:180px; border-radius:12px; background:#e0e0e0; margin-bottom:15px;"></div>
+            <div class="organizer-name">Lan Wu</div>
+            <div class="organizer-title">Assistant Professor</div>
+            <div class="organizer-affiliation">University of Western Australia</div>
+          </div>
+          <div class="organizer-card">
+            <img src="assets/organizers/yafei-hu.jpg" alt="Yingyu Wang" class="organizer-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div style="display:none; width:180px; height:180px; border-radius:12px; background:#e0e0e0; margin-bottom:15px;"></div>
+            <div class="organizer-name">Yingyu Wang</div>
+            <div class="organizer-title">Postdoc</div>
+            <div class="organizer-affiliation">University of Edinburgh</div>
+          </div>
+          <div class="organizer-card">
+            <img src="assets/organizers/lukas-schmid.jpg" alt="Tiancheng Li" class="organizer-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div style="display:none; width:180px; height:180px; border-radius:12px; background:#e0e0e0; margin-bottom:15px;"></div>
+            <div class="organizer-name">Tiancheng Li</div>
+            <div class="organizer-title">Postdoc</div>
+            <div class="organizer-affiliation">University of Technology Sydney </div>
+          </div>
+          <div class="organizer-card">
+            <img src="assets/organizers/ayoung-kim.jpg" alt="Cedric Le Gentil " class="organizer-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div style="display:none; width:180px; height:180px; border-radius:12px; background:#e0e0e0; margin-bottom:15px;"></div>
+            <div class="organizer-name">Cedric Le Gentil</div>
+            <div class="organizer-title">Researcher</div>
+            <div class="organizer-affiliation">ETH Zurich</div>
+          </div>
+          <div class="organizer-card">
+            <img src="assets/organizers/stefan-leutenegger.jpg" alt="Chuchu Chen" class="organizer-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div style="display:none; width:180px; height:180px; border-radius:12px; background:#e0e0e0; margin-bottom:15px;"></div>
+            <div class="organizer-name">Chuchu Chen</div>
+            <div class="organizer-title">Assistant Professor</div>
+            <div class="organizer-affiliation">The George Washington University</div>
+          </div>
+          <div class="organizer-card">
+            <img src="assets/organizers/guoquan-huang.jpg" alt="Jaime Valls Miro" class="organizer-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div style="display:none; width:180px; height:180px; border-radius:12px; background:#e0e0e0; margin-bottom:15px;"></div>
+            <div class="organizer-name">Jaime Valls Miro</div>
+            <div class="organizer-title">Professor</div>
+            <div class="organizer-affiliation">U???</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="schedule">
+        <h2>Schedule</h2>
+        <p>Workshop schedule will be announced soon.</p>
+      </section>
+
+      <section id="contact">
+        <h2>Contact</h2>
+        <div class="contact-info">
+          <p><strong>Email:</strong> <a href="mailto:your-email@domain.com">your-email@domain.com</a></p>
+          <p>For inquiries about the workshop, submissions, or general information, please feel free to contact us.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 From Perception to Action: Representation-Centric Robot Autonomy. All rights reserved.</p>
+      <p>This website is licensed under the <a href="LICENSE">MIT License</a>.</p>
+    </footer>
+  </div>
+</body>
+</html>
