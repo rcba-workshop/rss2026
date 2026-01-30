@@ -258,12 +258,27 @@
     
     .organizers-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 40px;
       margin-top: 30px;
-      max-width: 1000px;
+      max-width: 1400px;
       margin-left: auto;
       margin-right: auto;
+      justify-items: center;
+    }
+    
+    /* 第二行3个组织者居中：从第2列开始 */
+    .organizer-card:nth-child(5) {
+      grid-column-start: 2;
+    }
+    
+    @media (max-width: 1200px) {
+      .organizers-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .organizer-card:nth-child(5) {
+        grid-column-start: auto;
+      }
     }
     
     @media (max-width: 768px) {
