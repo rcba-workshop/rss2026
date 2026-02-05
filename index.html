@@ -303,11 +303,23 @@
       .organizers-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+      .organizer-card:nth-child(5),
+      .organizer-card:nth-child(6),
+      .organizer-card:nth-child(7) {
+        grid-column: auto;
+        grid-row: auto;
+      }
     }
     
     @media (max-width: 480px) {
       .organizers-grid {
         grid-template-columns: 1fr;
+      }
+      .organizer-card:nth-child(5),
+      .organizer-card:nth-child(6),
+      .organizer-card:nth-child(7) {
+        grid-column: auto;
+        grid-row: auto;
       }
     }
     
@@ -384,6 +396,19 @@
       
       .conference-info {
         gap: 20px;
+        width: 100%;
+      }
+      
+      .conference-logo {
+        width: 100%;
+      }
+      
+      .rss-logo-img {
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
       }
       
       .nav-buttons {
