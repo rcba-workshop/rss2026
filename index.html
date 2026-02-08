@@ -226,41 +226,52 @@
     
     .keynote-speakers {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      margin-top: 20px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      margin-top: 30px;
+      max-width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
+      justify-items: center;
     }
     
+    /* Speaker cards layout aligned with organizers layout */
     .speaker-card {
-      background-color: #f8f9fa;
-      padding: 25px;
-      border-radius: 10px;
-      border: 1px solid #e0e0e0;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    
-    .speaker-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
     
     .speaker-name {
-      font-size: 1.3em;
+      font-size: 1.1em;
       font-weight: 600;
-      color: #2c3e50;
-      margin-bottom: 8px;
+      color: #3498db;
+      margin-bottom: 5px;
+    }
+    
+    .speaker-title {
+      font-size: 0.9em;
+      color: #555;
+      margin-bottom: 3px;
     }
     
     .speaker-affiliation {
-      color: #7f8c8d;
-      font-size: 1em;
-      margin-bottom: 12px;
+      font-size: 0.9em;
+      color: #777;
     }
     
-    .speaker-bio {
-      color: #555;
-      font-size: 0.95em;
-      line-height: 1.6;
+    /* Reuse the same image styling for organizers and keynote speakers */
+    .organizer-photo,
+    .speaker-photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 12px;
+      object-fit: cover;
+      object-position: center top;
+      background-color: #e0e0e0;
+      margin-bottom: 15px;
+      border: 2px solid #f0f0f0;
     }
     
     .organizers-grid {
@@ -275,32 +286,38 @@
     }
     
     /* 第二行3个组织者：分别定位在1-2、2-3、3-4列之间，使用跨列但确保只有2行 */
-    .organizer-card:nth-child(5) {
-      grid-column: 1 / 3;
-      grid-row: 2;
-    }
-    .organizer-card:nth-child(6) {
-      grid-column: 2 / 4;
-      grid-row: 2;
-    }
-    .organizer-card:nth-child(7) {
-      grid-column: 3 / 5;
-      grid-row: 2;
+    /* 只在足够宽的屏幕上（>1200px）使用跨列布局 */
+    @media (min-width: 1201px) {
+      .organizer-card:nth-child(5) {
+        grid-column: 1 / 3;
+        grid-row: 2;
+      }
+      .organizer-card:nth-child(6) {
+        grid-column: 2 / 4;
+        grid-row: 2;
+      }
+      .organizer-card:nth-child(7) {
+        grid-column: 3 / 5;
+        grid-row: 2;
+      }
     }
     
-    @media (max-width: 1200px) {
-      .organizers-grid {
+    @media (max-width: 1024px) {
+      .organizers-grid,
+      .keynote-speakers {
         grid-template-columns: repeat(3, 1fr);
       }
       .organizer-card:nth-child(5),
       .organizer-card:nth-child(6),
       .organizer-card:nth-child(7) {
         grid-column: auto;
+        grid-row: auto;
       }
     }
     
     @media (max-width: 768px) {
-      .organizers-grid {
+      .organizers-grid,
+      .keynote-speakers {
         grid-template-columns: repeat(2, 1fr);
       }
       .organizer-card:nth-child(5),
@@ -312,7 +329,8 @@
     }
     
     @media (max-width: 480px) {
-      .organizers-grid {
+      .organizers-grid,
+      .keynote-speakers {
         grid-template-columns: 1fr;
       }
       .organizer-card:nth-child(5),
@@ -328,16 +346,6 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-    }
-    
-    .organizer-photo {
-      width: 180px;
-      height: 180px;
-      border-radius: 12px;
-      object-fit: cover;
-      background-color: #e0e0e0;
-      margin-bottom: 15px;
-      border: 2px solid #f0f0f0;
     }
     
     .organizer-name {
@@ -513,8 +521,67 @@
 
       <section id="speakers">
         <h2>Keynote Speakers</h2>
-        <div class="placeholder-text">
-          Keynote speakers will be announced soon.
+        <div class="keynote-speakers">
+          <div class="speaker-card">
+            <img src="assets/speakers/Ayoung.png" alt="Ayoung Kim" class="speaker-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div style="display:none; width:180px; height:180px; border-radius:12px; background:#e0e0e0; margin-bottom:15px;"></div>
+            <div class="speaker-name"><a href="https://ayoungk.github.io/" target="_blank">Ayoung Kim</a></div>
+            <div class="speaker-title">Associate Professor</div>
+            <div class="speaker-affiliation">Seoul National University</div>
+          </div>
+          <div class="speaker-card">
+            <img src="assets/speakers/teresa.jpeg" alt="Teresa Vidal-Calleja" class="speaker-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div style="display:none; width:180px; height:180px; border-radius:12px; background:#e0e0e0; margin-bottom:15px;"></div>
+            <div class="speaker-name"><a href="https://profiles.uts.edu.au/Teresa.VidalCalleja" target="_blank">Teresa Vidal-Calleja</a></div>
+            <div class="speaker-title">Professor</div>
+            <div class="speaker-affiliation">University of Toronto</div>
+          </div>
+
+
+          <div class="speaker-card">
+            <img src="assets/speakers/Tim.jpeg" alt="Timothy D Barfoot" class="speaker-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div style="display:none; width:180px; height:180px; border-radius:12px; background:#e0e0e0; margin-bottom:15px;"></div>
+            <div class="speaker-name"><a href="https://profiles.uts.edu.au/Teresa.VidalCalleja" target="_blank">Timothy D Barfoot</a></div>
+            <div class="speaker-title">Professor</div>
+            <div class="speaker-affiliation">University of Technology Sydney</div>
+          </div>
+
+
+          <div class="speaker-card">
+            <img src="assets/speakers/Maani.jpg" alt="Maani Ghaffari" class="speaker-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div style="display:none; width:180px; height:180px; border-radius:12px; background:#e0e0e0; margin-bottom:15px;"></div>
+            <div class="speaker-name"><a href="https://name.engin.umich.edu/people/ghaffari-maani/" target="_blank">Maani Ghaffari</a></div>
+            <div class="speaker-title">Assistant Professor</div>
+            <div class="speaker-affiliation">University of Michigan</div>
+          </div>
+          <div class="speaker-card">
+            <img src="assets/speakers/lantao.jpg" alt="Lantao Liu" class="speaker-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div style="display:none; width:180px; height:180px; border-radius:12px; background:#e0e0e0; margin-bottom:15px;"></div>
+            <div class="speaker-name"><a href="https://vail-robotics.net/pages/lantaoliu" target="_blank">Lantao Liu</a></div>
+            <div class="speaker-title">Associate Professor</div>
+            <div class="speaker-affiliation">Indiana University Bloomington</div>
+          </div>
+          <div class="speaker-card">
+            <img src="assets/speakers/Guoquan.webp" alt="Guoquan Huang" class="speaker-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div style="display:none; width:180px; height:180px; border-radius:12px; background:#e0e0e0; margin-bottom:15px;"></div>
+            <div class="speaker-name"><a href="https://udel.edu/~ghuang/" target="_blank">Guoquan (Paul) Huang</a></div>
+            <div class="speaker-title">Professor</div>
+            <div class="speaker-affiliation">University of Delaware &amp; Meituan</div>
+          </div>
+          <div class="speaker-card">
+            <img src="assets/speakers/yixi.jpg" alt="Yixi Cai" class="speaker-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div style="display:none; width:180px; height:180px; border-radius:12px; background:#e0e0e0; margin-bottom:15px;"></div>
+            <div class="speaker-name"><a href="https://yixicai.com/" target="_blank">Yixi Cai</a></div>
+            <div class="speaker-title">Postdoctoral Fellow</div>
+            <div class="speaker-affiliation">KTH</div>
+          </div>
+          <div class="speaker-card">
+            <img src="assets/speakers/qingwen.jpg" alt="Qingwen Zhang" class="speaker-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div style="display:none; width:180px; height:180px; border-radius:12px; background:#e0e0e0; margin-bottom:15px;"></div>
+            <div class="speaker-name"><a href="https://kin-zhang.github.io/" target="_blank">Qingwen Zhang</a></div>
+            <div class="speaker-title">PhD student</div>
+            <div class="speaker-affiliation">KTH</div>
+          </div>
         </div>
       </section>
 
@@ -522,49 +589,49 @@
         <h2>Organizers</h2>
         <div class="organizers-grid">
           <div class="organizer-card">
-            <img src="assets/organizers/yingyu.jpg" alt="Yingyu Wang" class="organizer-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <img src="assets/organizers/yingyu.png" alt="Yingyu Wang" class="organizer-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
             <div style="display:none; width:180px; height:180px; border-radius:12px; background:#e0e0e0; margin-bottom:15px;"></div>
             <div class="organizer-name"><a href="https://wangyingyu.github.io" target="_blank">Yingyu Wang</a></div>
             <div class="organizer-title">Postdoctoral Research Associate</div>
             <div class="organizer-affiliation">University of Technology Sydney</div>
           </div>
           <div class="organizer-card">
-            <img src="assets/organizers/lan.jpg" alt="Lan Wu" class="organizer-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <img src="assets/organizers/Lan.jpg" alt="Lan Wu" class="organizer-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
             <div style="display:none; width:180px; height:180px; border-radius:12px; background:#e0e0e0; margin-bottom:15px;"></div>
             <div class="organizer-name"><a href="https://lanwu076.github.io" target="_blank">Lan Wu</a></div>
             <div class="organizer-title">Lecturer</div>
             <div class="organizer-affiliation">University of Western Australia</div>
           </div>
           <div class="organizer-card">
-            <img src="assets/organizers/tiancheng.jpg" alt="Tiancheng Li" class="organizer-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <img src="assets/organizers/tiancheng.jpeg" alt="Tiancheng Li" class="organizer-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
             <div style="display:none; width:180px; height:180px; border-radius:12px; background:#e0e0e0; margin-bottom:15px;"></div>
             <div class="organizer-name"><a href="https://tianchengli-robotics.github.io" target="_blank">Tiancheng Li</a></div>
             <div class="organizer-title">Postdoctoral Research Fellow</div>
             <div class="organizer-affiliation">University of Technology Sydney</div>
           </div>
           <div class="organizer-card">
-            <img src="assets/organizers/chuchu.jpg" alt="Chuchu Chen" class="organizer-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <img src="assets/organizers/chuchu.png" alt="Chuchu Chen" class="organizer-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
             <div style="display:none; width:180px; height:180px; border-radius:12px; background:#e0e0e0; margin-bottom:15px;"></div>
             <div class="organizer-name"><a href="https://www.chuchuchen.net" target="_blank">Chuchu Chen</a></div>
             <div class="organizer-title">Assistant Professor</div>
             <div class="organizer-affiliation">The George Washington University</div>
           </div>
           <div class="organizer-card">
-            <img src="assets/organizers/Marija.jpg" alt="Marija Popović" class="organizer-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <img src="assets/organizers/Marija.jpeg" alt="Marija Popović" class="organizer-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
             <div style="display:none; width:180px; height:180px; border-radius:12px; background:#e0e0e0; margin-bottom:15px;"></div>
             <div class="organizer-name"><a href="https://scholar.google.com/citations?user=XON8iQoAAAAJ&hl=en" target="_blank">Marija Popović</a></div>
             <div class="organizer-title">Assistant Professor</div>
             <div class="organizer-affiliation">Delft University of Technology </div>
           </div>
           <div class="organizer-card">
-            <img src="assets/organizers/cedric.jpg" alt="Cédric Le Gentil " class="organizer-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <img src="assets/organizers/cedric.jpeg" alt="Cédric Le Gentil " class="organizer-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
             <div style="display:none; width:180px; height:180px; border-radius:12px; background:#e0e0e0; margin-bottom:15px;"></div>
             <div class="organizer-name"><a href="https://mrl.ethz.ch/the-group/people/lab-members/cedric-le-gentil.html" target="_blank">Cédric Le Gentil</a></div>
             <div class="organizer-title">Researcher</div>
             <div class="organizer-affiliation">ETH Zurich</div>
           </div>
           <div class="organizer-card">
-            <img src="assets/organizers/jaime.jpg" alt="Jaime Valls Miro" class="organizer-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <img src="assets/organizers/jaime.jpeg" alt="Jaime Valls Miro" class="organizer-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
             <div style="display:none; width:180px; height:180px; border-radius:12px; background:#e0e0e0; margin-bottom:15px;"></div>
             <div class="organizer-name"><a href="https://www.azti.es/en/team/jaime-valls-miro/" target="_blank">Jaime Valls Miro</a></div>
             <div class="organizer-title">Professor</div>
