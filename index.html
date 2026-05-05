@@ -330,6 +330,89 @@
       margin-top: 16px;
     }
     
+    /* Schedule: stack rows as cards on narrow screens (avoids column overlap from fixed %) */
+    @media (max-width: 768px) {
+      .schedule-table-wrap {
+        overflow-x: visible;
+        margin-left: -4px;
+        margin-right: -4px;
+      }
+      
+      .schedule-table {
+        table-layout: auto;
+        width: 100%;
+        font-size: 0.95em;
+        border: 0;
+      }
+      
+      .schedule-table thead {
+        display: none;
+      }
+      
+      .schedule-table tbody tr {
+        display: block;
+        margin-bottom: 14px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+      }
+      
+      .schedule-table tbody tr:last-child {
+        margin-bottom: 0;
+      }
+      
+      .schedule-table tbody td {
+        display: block;
+        width: 100% !important;
+        box-sizing: border-box;
+        text-align: left;
+        padding: 10px 14px;
+        border: none;
+        border-bottom: 1px solid #eee;
+        vertical-align: top;
+        word-break: normal;
+        overflow-wrap: break-word;
+      }
+      
+      .schedule-table tbody td:last-child {
+        border-bottom: none;
+      }
+      
+      .schedule-table tbody tr:nth-child(even) {
+        background: #fafafa;
+      }
+      
+      .schedule-table .time-col {
+        white-space: normal;
+        background: #f0f4f8 !important;
+        font-weight: 600;
+        color: #2c3e50;
+      }
+      
+      .schedule-table tbody td::before {
+        display: block;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: #3498db;
+        margin-bottom: 6px;
+      }
+      
+      .schedule-table tbody td:nth-child(1)::before {
+        content: "Time";
+      }
+      
+      .schedule-table tbody td:nth-child(2)::before {
+        content: "Session";
+      }
+      
+      .schedule-table tbody td:nth-child(3)::before {
+        content: "Speaker";
+      }
+    }
+    
     /* Reuse the same image styling for organizers and keynote speakers */
     .organizer-photo,
     .speaker-photo {
