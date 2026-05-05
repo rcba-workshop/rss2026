@@ -261,6 +261,75 @@
       color: #777;
     }
     
+    .schedule-note {
+      font-size: 0.95em;
+      color: #555;
+      margin-bottom: 18px;
+    }
+    
+    .schedule-table-wrap {
+      overflow-x: auto;
+      margin-top: 10px;
+    }
+    
+    .schedule-table {
+      width: 100%;
+      table-layout: fixed;
+      border-collapse: collapse;
+      font-size: 1.05em;
+    }
+    
+    .schedule-table th,
+    .schedule-table td {
+      border: 1px solid #ddd;
+      padding: 12px 14px;
+      text-align: center;
+      vertical-align: middle;
+    }
+    
+    .schedule-table th {
+      background: #f8f9fa;
+      color: #2c3e50;
+      font-weight: 600;
+    }
+    
+    .schedule-table tbody tr:nth-child(even) {
+      background: #fafafa;
+    }
+    
+    /* Column widths (adjust % to taste: Time | Session | Speaker) */
+    .schedule-table .time-col {
+      width: 10%;
+      white-space: nowrap;
+      color: #555;
+    }
+    
+    .schedule-table th:nth-child(2),
+    .schedule-table td:nth-child(2) {
+      width: 60%;
+    }
+    
+    .schedule-table th:nth-child(3),
+    .schedule-table td:nth-child(3) {
+      width: 30%;
+    }
+    
+    .schedule-table td:nth-child(2),
+    .schedule-table td:nth-child(3) {
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+    
+    .schedule-table .schedule-session strong {
+      color: #2c3e50;
+    }
+    
+    .schedule-last-updated {
+      font-size: 0.9em;
+      color: #777;
+      margin-top: 16px;
+    }
+    
     /* Reuse the same image styling for organizers and keynote speakers */
     .organizer-photo,
     .speaker-photo {
@@ -567,7 +636,7 @@
           <div class="speaker-card">
             <img src="assets/speakers/Tim.jpeg" alt="Timothy D Barfoot" class="speaker-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
             <div style="display:none; width:180px; height:180px; border-radius:12px; background:#e0e0e0; margin-bottom:15px;"></div>
-            <div class="speaker-name"><a href="https://profiles.uts.edu.au/Teresa.VidalCalleja" target="_blank">Timothy D Barfoot</a></div>
+            <div class="speaker-name"><a href="https://www.cs.toronto.edu/~barfoot/" target="_blank">Timothy D Barfoot</a></div>
             <div class="speaker-title">Professor</div>
             <div class="speaker-affiliation">University of Toronto</div>
           </div>
@@ -639,7 +708,74 @@
 
       <section id="schedule">
         <h2>Schedule</h2>
-        <p>Workshop schedule will be announced soon.</p>
+        <div class="schedule-table-wrap">
+          <table class="schedule-table">
+            <thead>
+              <tr>
+                <th class="time-col">Time</th>
+                <th>Session</th>
+                <th>Speaker</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="time-col">9:00-9:05</td>
+                <td class="schedule-session"><strong>Welcome & Introduction</strong></td>
+                <td><strong> </strong></td>
+              </tr>
+              <tr>
+                <td class="time-col">9:05-9:30</td>
+                <td class="schedule-session"><strong>Invited Talk 1 - TBA</strong></td>
+                <td><strong><a href="https://profiles.uts.edu.au/Teresa.VidalCalleja" target="_blank" rel="noopener noreferrer">Teresa Vidal-Calleja</a></strong><br>University of Technology Sydney</td>
+              </tr>
+              <tr>
+                <td class="time-col">9:30-9:55</td>
+                <td class="schedule-session"><strong>Invited Talk 2 - TBA</strong></td>
+                <td><strong><a href="https://vail-robotics.net/pages/lantaoliu" target="_blank" rel="noopener noreferrer">Lantao Liu</a></strong><br>Indiana University Bloomington</td>
+              </tr>
+              <tr>
+                <td class="time-col">9:55-10:20</td>
+                <td class="schedule-session"><strong>Invited Talk 3 - Computational Symmetry and Learning for Robotics</strong></td>
+                <td><strong><a href="https://name.engin.umich.edu/people/ghaffari-maani/" target="_blank" rel="noopener noreferrer">Maani Ghaffari</a></strong><br>University of Michigan</td>
+              </tr>
+              <tr>
+                <td class="time-col">10:20-10:35</td>
+                <td class="schedule-session"><strong>Early Career Talk - TBA</strong></td>
+                <td><strong><a href="https://yixicai.com/" target="_blank" rel="noopener noreferrer">Yixi Cai</a></strong><br>KTH Royal Institute of Technology</td>
+              </tr>
+              <tr>
+                <td class="time-col">10:35-11:00</td>
+                <td class="schedule-session"><strong>Invited Talk 4 - Local Maps Are All You Need</strong></td>
+                <td><strong><a href="https://www.cs.toronto.edu/~barfoot/" target="_blank" rel="noopener noreferrer">Timothy D Barfoot</a></strong><br>University of Toronto</td>
+              </tr>
+              <tr>
+                <td class="time-col">11:00-11:30</td>
+                <td class="schedule-session"><strong>Poster Session & Coffee Break</strong></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td class="time-col">11:30-11:55</td>
+                <td class="schedule-session"><strong>Invited Talk 5 - TBA</strong></td>
+                <td><strong><a href="https://udel.edu/~ghuang/" target="_blank" rel="noopener noreferrer">Guoquan (Paul) Huang</a></strong><br>University of Delaware &amp; Meituan</td>
+              </tr>
+              <tr>
+                <td class="time-col">11:55-12:20</td>
+                <td class="schedule-session"><strong>Invited Talk 6 - From Geometry to Neural Fields: Representation Choices for Robust and Scalable LIDAR Autonomy</strong></td>
+                <td><strong><a href="https://ayoungk.github.io/" target="_blank" rel="noopener noreferrer">Ayoung Kim</a></strong><br>Seoul National University</td>
+              </tr>
+              <tr>
+                <td class="time-col">12:20-12:45</td>
+                <td class="schedule-session"><strong>Invited Talk 7 - TBA</strong></td>
+                <td><strong><a href="https://marinerobotics.mit.edu/" target="_blank" rel="noopener noreferrer">John Leonard</a></strong><br>MIT</td>
+              </tr>
+              <tr>
+                <td class="time-col">12:45-12:50</td>
+                <td class="schedule-session"><strong>Closing Remarks</strong></td>
+                <td><strong> </strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </section>
 
       <section id="contact">
