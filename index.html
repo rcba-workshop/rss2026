@@ -121,6 +121,21 @@
     
     .info-icon {
       font-size: 1.2em;
+      display: inline-flex;
+      align-items: center;
+    }
+    
+    /* Custom calendar (emoji 📅 always shows Jul 17 on many platforms) */
+    .calendar-icon-svg {
+      display: block;
+      width: 1.35em;
+      height: 1.55em;
+      flex-shrink: 0;
+    }
+    
+    .nav-button-icon .calendar-icon-svg {
+      width: 1.45em;
+      height: 1.68em;
     }
     
     .nav-buttons {
@@ -157,6 +172,15 @@
       margin-bottom: 4px;
     }
     
+    .nav-button-sub {
+      font-size: 0.68em;
+      font-weight: 600;
+      opacity: 0.95;
+      margin-top: 4px;
+      line-height: 1.15;
+      letter-spacing: 0.02em;
+    }
+    
     .nav-button.speakers {
       background: linear-gradient(135deg, #e74c3c, #c0392b);
     }
@@ -167,6 +191,10 @@
     
     .nav-button.schedule {
       background: linear-gradient(135deg, #3498db, #2980b9);
+    }
+    
+    .nav-button.contributions {
+      background: linear-gradient(135deg, #9b59b6, #8e44ad);
     }
     
     .nav-button.contact {
@@ -195,6 +223,43 @@
       margin-bottom: 15px;
       margin-top: 25px;
       color: #34495e;
+    }
+    
+    .cfp-openreview-link {
+      display: inline-block;
+      margin: 12px 0 8px;
+      padding: 10px 18px;
+      background: linear-gradient(135deg, #3498db, #2980b9);
+      color: #fff !important;
+      font-weight: 600;
+      border-radius: 8px;
+      text-decoration: none;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .cfp-openreview-link:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      text-decoration: none;
+      color: #fff !important;
+    }
+    
+    .cfp-dates {
+      background: #f8f9fa;
+      padding: 18px 22px;
+      border-radius: 10px;
+      border-left: 4px solid #9b59b6;
+      margin-top: 12px;
+    }
+    
+    .cfp-dates p {
+      margin-bottom: 8px;
+      text-align: left;
+    }
+    
+    .cfp-dates p:last-child {
+      margin-bottom: 0;
     }
     
     p {
@@ -583,6 +648,17 @@
   </style>
 </head>
 <body>
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+    <symbol id="calendar-july13" viewBox="0 0 56 64">
+      <rect x="5" y="6" width="46" height="52" rx="6" fill="#fff" stroke="#c8c8c8" stroke-width="1" />
+      <rect x="5" y="6" width="46" height="20" rx="6" fill="#e74c3c" />
+      <rect x="5" y="18" width="46" height="8" fill="#e74c3c" />
+      <circle cx="16" cy="11" r="2.5" fill="#f2f2f2" />
+      <circle cx="40" cy="11" r="2.5" fill="#f2f2f2" />
+      <text x="28" y="17.5" text-anchor="middle" fill="#fff" font-size="8.5" font-family="system-ui,-apple-system,BlinkMacSystemFont,sans-serif" font-weight="700">July</text>
+      <text x="28" y="47" text-anchor="middle" fill="#1a1a1a" font-size="22" font-family="system-ui,-apple-system,BlinkMacSystemFont,sans-serif" font-weight="700">13</text>
+    </symbol>
+  </svg>
   <div class="container">
     <header>
       <h1>FROM PERCEPTION TO ACTION:<br>REPRESENTATION-CENTRIC ROBOT AUTONOMY</h1>
@@ -599,8 +675,10 @@
           <span>Sydney, Australia</span>
         </div>
         <div class="info-item">
-          <span class="info-icon">📅</span>
-          <span>July 13–17, 2026</span>
+          <span class="info-icon" aria-hidden="true">
+            <svg class="calendar-icon-svg" focusable="false"><use href="#calendar-july13" /></svg>
+          </span>
+          <span>13 July 2026</span>
         </div>
       </div>
     </header>
@@ -615,8 +693,15 @@
         <div>Organizers</div>
       </a>
       <a href="#schedule" class="nav-button schedule">
-        <div class="nav-button-icon">📅</div>
+        <div class="nav-button-icon" aria-hidden="true">
+          <svg class="calendar-icon-svg" focusable="false"><use href="#calendar-july13" /></svg>
+        </div>
         <div>Schedule</div>
+        <!-- <div class="nav-button-sub">13 July</div> -->
+      </a>
+      <a href="#contributions" class="nav-button contributions">
+        <div class="nav-button-icon">📄</div>
+        <div>Paper submission</div>
       </a>
       <a href="#contact" class="nav-button contact">
         <div class="nav-button-icon">✉️</div>
@@ -657,9 +742,53 @@
         </p>
       </section>
 
-      <section id="topics">
-        <h2>Topics of Interest (Call for Contributions)</h2>
-        <p>Topics of interest include, but are not limited to:</p>
+      <section id="contributions">
+        <h2>Call for Contributions</h2>
+        <p>
+          We invite researchers and practitioners from robotics, computer vision, and related fields to share advances in
+          <strong>representation-centric autonomy</strong>: preliminary results, systems insights, and lessons from deployment.
+          Accepted contributions may be featured in the poster session; accepted papers can be listed on this workshop site.
+          Authors retain intellectual property; archiving requirements follow the venue rules on OpenReview.
+        </p>
+
+        <h3>Submission formats</h3>
+        <p>Formats follow the official RSS 2026 workshop venue on OpenReview (including page limits and templates):</p>
+        <!-- <ul>
+          <li>Research Papers (up to 6 pages, excl. refs) </li>
+          <li><strong>Field reports / vision papers</strong> — shorter submissions where appropriate </li>
+          <li><strong>Review model</strong> — non-anonymous / single-blind review</li>
+        </ul> -->
+        <div class="cfp-dates">
+          <p> Research Papers (up to 6 pages, excl. refs) </p>
+          <p> Field Reports / Visionary Papers (2–4 pages, excl. refs) </p>
+          <p> Non-anonymous Authors / Single-Bind Review </p>
+        </div>
+
+        <h3>Submission via OpenReview</h3>
+        <p>
+          Submit through the RSS 2026 workshop group on OpenReview. Use your OpenReview account to create or upload submissions and track decisions.
+        </p>
+        <p>
+          <a class="cfp-openreview-link" href="https://openreview.net/group?id=roboticsfoundation.org/RSS/2026/Workshop/From_Perception_to_Action" target="_blank" rel="noopener noreferrer">OpenReview workshop venue →</a>
+        </p>
+        <p style="font-size: 0.95em; color: #555;">
+          If you already manage submissions as an author, you can also open your consoles via the same venue:
+          <a href="https://openreview.net/group?id=roboticsfoundation.org%2FRSS%2F2026%2FWorkshop%2FFrom_Perception_to_Action#tab-your-consoles" target="_blank" rel="noopener noreferrer">Your consoles (OpenReview)</a>.
+        </p>
+
+        <h3>Important dates</h3>
+        <div class="cfp-dates">
+          <p><strong>Submission deadline:</strong> June 11, 2026 </p>
+          <p><strong>Decision notification: </strong> June 25, 2026 </p>
+        </div>
+
+        <!-- <h3>Paper awards</h3>
+        <p>
+          The workshop may recognize outstanding contributions with awards (e.g., best paper / best poster), subject to submission volume and program constraints; details will be announced on OpenReview or here when finalized.
+        </p> -->
+
+        <h3>Topics of interest</h3>
+        <p>Topics include, but are not limited to:</p>
         <ul>
           <li>Representation-aware state estimation</li>
           <li>Explicit and implicit representations for mapping and localization</li>
