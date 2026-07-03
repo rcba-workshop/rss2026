@@ -161,6 +161,10 @@
       line-height: 1.35;
     }
 
+    .venue-name {
+      white-space: nowrap;
+    }
+
     .event-detail-sub {
       display: block;
       margin-top: 2px;
@@ -244,7 +248,7 @@
     }
     
     .nav-button.schedule {
-      background: linear-gradient(135deg, #2f6de1, #1f58cf);
+      background: linear-gradient(135deg, #e74c3c, #c83b2d);
     }
 
     .nav-button.papers {
@@ -718,14 +722,14 @@
           <span class="event-detail-icon" aria-hidden="true">☀️</span>
           <span class="event-detail-copy">
             <span class="event-detail-label">Time</span>
-            <span class="event-detail-value">Half-day · Morning</span>
+            <span class="event-detail-value">8:30-12:30</span>
           </span>
         </div>
         <div class="event-detail">
           <span class="event-detail-icon" aria-hidden="true">📍</span>
           <span class="event-detail-copy">
             <span class="event-detail-label">Venue</span>
-            <span class="event-detail-value">UTS City Campus, Building 11</span>
+            <span class="event-detail-value venue-name">UTS City Campus, Building 11</span>
             <span class="event-detail-sub">Room CB11.00.405 · Collaborative Lecture Theatre · Sydney, Australia</span>
           </span>
         </div>
@@ -734,6 +738,17 @@
     </header>
 
     <div class="nav-buttons">
+      <a href="#schedule" class="nav-button schedule">
+        <div class="nav-button-icon" aria-hidden="true">
+          <svg class="calendar-icon-svg" focusable="false"><use href="#calendar-july13" /></svg>
+        </div>
+        <div>Schedule</div>
+      </a>
+      <a href="accepted-papers.html" class="nav-button papers">
+        <div class="nav-button-icon">📚</div>
+        <div>Accepted papers</div>
+        <div class="nav-button-sub">20 posters</div>
+      </a>
       <a href="#speakers" class="nav-button speakers">
         <div class="nav-button-icon">👤</div>
         <div>Speakers</div>
@@ -742,30 +757,90 @@
         <div class="nav-button-icon">👥</div>
         <div>Organizers</div>
       </a>
-      <a href="#schedule" class="nav-button schedule">
-        <div class="nav-button-icon" aria-hidden="true">
-          <svg class="calendar-icon-svg" focusable="false"><use href="#calendar-july13" /></svg>
-        </div>
-        <div>Schedule</div>
-        <!-- <div class="nav-button-sub">13 July</div> -->
-      </a>
-      <a href="accepted-papers.html" class="nav-button papers">
-        <div class="nav-button-icon">📚</div>
-        <div>Accepted papers</div>
-        <div class="nav-button-sub">20 posters</div>
+      <a href="#contact" class="nav-button contact">
+        <div class="nav-button-icon">✉️</div>
+        <div>Contact</div>
       </a>
       <a href="call-for-contributions.html" class="nav-button contributions">
         <div class="nav-button-icon">📄</div>
         <div>Call for contributions</div>
         <div class="nav-button-sub">Closed</div>
       </a>
-      <a href="#contact" class="nav-button contact">
-        <div class="nav-button-icon">✉️</div>
-        <div>Contact</div>
-      </a>
     </div>
 
     <main>
+      <section id="schedule">
+        <h2>Schedule</h2>
+        <div class="schedule-table-wrap">
+          <table class="schedule-table">
+            <thead>
+              <tr>
+                <th class="time-col">Time</th>
+                <th>Session</th>
+                <th>Speaker</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="time-col">8:30-8:35</td>
+                <td class="schedule-session"><strong>Welcome & Introduction</strong></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td class="time-col">8:35-9:00</td>
+                <td class="schedule-session"><strong>Invited Talk 1 - Continuous Safety: Spatial Fields for Control, Planning, and Learning</strong></td>
+                <td><strong><a href="https://profiles.uts.edu.au/Teresa.VidalCalleja" target="_blank" rel="noopener noreferrer">Teresa Vidal-Calleja</a></strong><br>University of Technology Sydney</td>
+              </tr>
+              <tr>
+                <td class="time-col">9:00-9:25</td>
+                <td class="schedule-session"><strong>Invited Talk 2 - Visual-Inertial Perception: From Kinematics to Dynamics</strong></td>
+                <td><strong><a href="https://udel.edu/~ghuang/" target="_blank" rel="noopener noreferrer">Guoquan (Paul) Huang</a></strong><br>University of Delaware &amp; Meituan</td>
+              </tr>
+              <tr>
+                <td class="time-col">9:25-9:50</td>
+                <td class="schedule-session"><strong>Invited Talk 3 - Computational Symmetry and Learning for Robotics</strong></td>
+                <td><strong><a href="https://name.engin.umich.edu/people/ghaffari-maani/" target="_blank" rel="noopener noreferrer">Maani Ghaffari</a></strong><br>University of Michigan</td>
+              </tr>
+              <tr>
+                <td class="time-col">9:50-10:15</td>
+                <td class="schedule-session"><strong>Invited Talk 4 - Local Maps Are All You Need</strong></td>
+                <td><strong><a href="https://asrl.utias.utoronto.ca/~tdb/" target="_blank" rel="noopener noreferrer">Timothy D Barfoot</a></strong><br>University of Toronto</td>
+              </tr>
+              <tr>
+                <td class="time-col">10:15-10:55</td>
+                <td class="schedule-session"><strong>Poster Session & Coffee Break</strong></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td class="time-col">10:55-11:20</td>
+                <td class="schedule-session"><strong>Invited Talk 5 - TBA</strong></td>
+                <td><strong><a href="https://vail-robotics.net/pages/lantaoliu" target="_blank" rel="noopener noreferrer">Lantao Liu</a></strong><br>Indiana University Bloomington</td>
+              </tr>
+              <tr>
+                <td class="time-col">11:20-11:35</td>
+                <td class="schedule-session"><strong>Early Career Talk - An Efficiency-Centric View of Map Representations for Robotics</strong></td>
+                <td><strong><a href="https://yixicai.com/" target="_blank" rel="noopener noreferrer">Yixi Cai</a></strong><br>KTH Royal Institute of Technology</td>
+              </tr>
+              <tr>
+                <td class="time-col">11:35-12:00</td>
+                <td class="schedule-session"><strong>Invited Talk 6 - From Geometry to Neural Fields: Representation Choices for Robust and Scalable LIDAR Autonomy</strong></td>
+                <td><strong><a href="https://ayoungk.github.io/" target="_blank" rel="noopener noreferrer">Ayoung Kim</a></strong><br>Seoul National University</td>
+              </tr>
+              <tr>
+                <td class="time-col">12:00-12:25</td>
+                <td class="schedule-session"><strong>Invited Talk 7 - Towards "Undo" for the Physical World</strong></td>
+                <td><strong><a href="https://marinerobotics.mit.edu/" target="_blank" rel="noopener noreferrer">John Leonard</a></strong><br>MIT</td>
+              </tr>
+              <tr>
+                <td class="time-col">12:25-12:30</td>
+                <td class="schedule-session"><strong>Closing Remarks</strong></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
       <section id="overview">
         <h2>Overview</h2>
         <p>
@@ -868,8 +943,8 @@
             <img src="assets/organizers/yingyu.png" alt="Yingyu Wang" class="organizer-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
             <div style="display:none; width:180px; height:180px; border-radius:12px; background:#e0e0e0; margin-bottom:15px;"></div>
             <div class="organizer-name"><a href="https://wangyingyu.github.io" target="_blank">Yingyu Wang</a></div>
-            <div class="organizer-title">Postdoctoral Research Associate</div>
-            <div class="organizer-affiliation">University of Technology Sydney</div>
+            <div class="organizer-title">Research Associate</div>
+            <div class="organizer-affiliation">The University of Edinburgh</div>
           </div>
           <div class="organizer-card">
             <img src="assets/organizers/Lan.jpg" alt="Lan Wu" class="organizer-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
@@ -913,78 +988,6 @@
             <div class="organizer-title">Professor</div>
             <div class="organizer-affiliation">AZTI</div>
           </div>
-        </div>
-      </section>
-
-      <section id="schedule">
-        <h2>Schedule</h2>
-        <div class="schedule-table-wrap">
-          <table class="schedule-table">
-            <thead>
-              <tr>
-                <th class="time-col">Time</th>
-                <th>Session</th>
-                <th>Speaker</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="time-col">8:30-8:35</td>
-                <td class="schedule-session"><strong>Welcome & Introduction</strong></td>
-                <td><strong> </strong></td>
-              </tr>
-              <tr>
-                <td class="time-col">8:35-9:00</td>
-                <td class="schedule-session"><strong>Invited Talk 1 - Continuous Safety: Spatial Fields for Control, Planning, and Learning </strong></td>
-                <td><strong><a href="https://profiles.uts.edu.au/Teresa.VidalCalleja" target="_blank" rel="noopener noreferrer">Teresa Vidal-Calleja</a></strong><br>University of Technology Sydney</td>
-              </tr>
-              <tr>
-                <td class="time-col">9:00-9:25</td>
-                <td class="schedule-session"><strong>Invited Talk 2 - Visual-Inertial Perception: From Kinematics to Dynamics</strong></td>
-                <td><strong><a href="https://udel.edu/~ghuang/" target="_blank" rel="noopener noreferrer">Guoquan (Paul) Huang</a></strong><br>University of Delaware &amp; Meituan</td>
-              </tr>
-              <tr>
-                <td class="time-col">9:25-9:50</td>
-                <td class="schedule-session"><strong>Invited Talk 3 - Computational Symmetry and Learning for Robotics</strong></td>
-                <td><strong><a href="https://name.engin.umich.edu/people/ghaffari-maani/" target="_blank" rel="noopener noreferrer">Maani Ghaffari</a></strong><br>University of Michigan</td>
-              </tr>
-              <tr>
-                <td class="time-col">9:50-10:05</td>
-                <td class="schedule-session"><strong>Early Career Talk - An Efficiency-Centric View of Map Representations for Robotics </strong></td>
-                <td><strong><a href="https://yixicai.com/" target="_blank" rel="noopener noreferrer">Yixi Cai</a></strong><br>KTH Royal Institute of Technology</td>
-              </tr>
-              <tr>
-                <td class="time-col">10:05-10:30</td>
-                <td class="schedule-session"><strong>Invited Talk 4 - Local Maps Are All You Need</strong></td>
-                <td><strong><a href="https://asrl.utias.utoronto.ca/~tdb/" target="_blank" rel="noopener noreferrer">Timothy D Barfoot</a></strong><br>University of Toronto</td>
-              </tr>
-              <tr>
-                <td class="time-col">10:30-11:10</td>
-                <td class="schedule-session"><strong>Poster Session & Coffee Break</strong></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td class="time-col">11:10-11:35</td>
-                <td class="schedule-session"><strong>Invited Talk 5 - TBA</strong></td>
-                <td><strong><a href="https://vail-robotics.net/pages/lantaoliu" target="_blank" rel="noopener noreferrer">Lantao Liu</a></strong><br>Indiana University Bloomington</td>               
-              </tr>
-              <tr>
-                <td class="time-col">11:35-12:00</td>
-                <td class="schedule-session"><strong>Invited Talk 6 - From Geometry to Neural Fields: Representation Choices for Robust and Scalable LIDAR Autonomy</strong></td>
-                <td><strong><a href="https://ayoungk.github.io/" target="_blank" rel="noopener noreferrer">Ayoung Kim</a></strong><br>Seoul National University</td>
-              </tr>
-              <tr>
-                <td class="time-col">12:00-12:25</td>
-                <td class="schedule-session"><strong>Invited Talk 7 - Towards "Undo" for the Physical World </strong></td>
-                <td><strong><a href="https://marinerobotics.mit.edu/" target="_blank" rel="noopener noreferrer">John Leonard</a></strong><br>MIT</td>
-              </tr>
-              <tr>
-                <td class="time-col">12:25-12:30</td>
-                <td class="schedule-session"><strong>Closing Remarks</strong></td>
-                <td><strong> </strong></td>
-              </tr>
-            </tbody>
-          </table>
         </div>
       </section>
 
