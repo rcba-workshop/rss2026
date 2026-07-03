@@ -102,27 +102,80 @@
       font-weight: 500;
     }
     
-    .location-date {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-      margin-top: 20px;
-      flex-wrap: wrap;
+    .event-details {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      max-width: 900px;
+      margin: 28px auto 0;
+      border: 1px solid #d9e3f2;
+      border-radius: 14px;
+      background: #fff;
+      box-shadow: 0 7px 22px rgba(38, 81, 145, 0.1);
+      overflow: hidden;
     }
-    
-    .info-item {
+
+    .event-detail {
       display: flex;
       align-items: center;
-      gap: 8px;
-      color: #555;
-      font-size: 1.1em;
+      gap: 13px;
+      min-width: 0;
+      padding: 18px 20px;
+      text-align: left;
+      border-right: 1px solid #e3eaf4;
     }
-    
-    .info-icon {
-      font-size: 1.2em;
+
+    .event-detail:nth-child(3) {
+      border-right: 0;
+    }
+
+    .event-detail-icon {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
+      flex: 0 0 38px;
+      min-height: 42px;
+      color: #2f6de1;
+      font-size: 1.35em;
+    }
+
+    .event-detail-copy {
+      min-width: 0;
+    }
+
+    .event-detail-label {
+      display: block;
+      margin-bottom: 2px;
+      color: #2f6de1;
+      font-size: 0.72em;
+      font-weight: 750;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .event-detail-value {
+      display: block;
+      color: #2c3e50;
+      font-size: 0.98em;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .event-detail-sub {
+      display: block;
+      margin-top: 2px;
+      color: #647180;
+      font-size: 0.78em;
+      line-height: 1.35;
+    }
+
+    .poster-location {
+      grid-column: 1 / -1;
+      padding: 10px 18px;
+      border-top: 1px solid #dfe8f5;
+      background: #f3f7ff;
+      color: #4d6078;
+      font-size: 0.86em;
+      text-align: center;
     }
     
     /* Custom calendar (emoji 📅 always shows Jul 17 on many platforms) */
@@ -227,43 +280,6 @@
       margin-bottom: 15px;
       margin-top: 25px;
       color: #34495e;
-    }
-    
-    .cfp-openreview-link {
-      display: inline-block;
-      margin: 12px 0 8px;
-      padding: 10px 18px;
-      background: linear-gradient(135deg, #3498db, #2980b9);
-      color: #fff !important;
-      font-weight: 600;
-      border-radius: 8px;
-      text-decoration: none;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.12);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    
-    .cfp-openreview-link:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-      text-decoration: none;
-      color: #fff !important;
-    }
-    
-    .cfp-dates {
-      background: #f8f9fa;
-      padding: 18px 22px;
-      border-radius: 10px;
-      border-left: 4px solid #9b59b6;
-      margin-top: 12px;
-    }
-    
-    .cfp-dates p {
-      margin-bottom: 8px;
-      text-align: left;
-    }
-    
-    .cfp-dates p:last-child {
-      margin-bottom: 0;
     }
     
     p {
@@ -644,9 +660,23 @@
         grid-template-columns: 1fr;
       }
       
-      .location-date {
-        flex-direction: column;
-        gap: 15px;
+      .event-details {
+        grid-template-columns: 1fr;
+        max-width: 520px;
+      }
+
+      .event-detail {
+        padding: 15px 18px;
+        border-right: 0;
+        border-bottom: 1px solid #e3eaf4;
+      }
+
+      .event-detail:nth-child(3) {
+        border-bottom: 0;
+      }
+
+      .poster-location {
+        grid-column: auto;
       }
     }
   </style>
@@ -673,17 +703,32 @@
         </div>
       </div>
       
-      <div class="location-date">
-        <div class="info-item">
-          <span class="info-icon">📍</span>
-          <span>Sydney, Australia</span>
-        </div>
-        <div class="info-item">
-          <span class="info-icon" aria-hidden="true">
+      <div class="event-details" aria-label="Workshop time and location">
+        <div class="event-detail">
+          <span class="event-detail-icon" aria-hidden="true">
             <svg class="calendar-icon-svg" focusable="false"><use href="#calendar-july13" /></svg>
           </span>
-          <span>13 July 2026</span>
+          <span class="event-detail-copy">
+            <span class="event-detail-label">Date</span>
+            <span class="event-detail-value">Monday, 13 July 2026</span>
+          </span>
         </div>
+        <div class="event-detail">
+          <span class="event-detail-icon" aria-hidden="true">☀️</span>
+          <span class="event-detail-copy">
+            <span class="event-detail-label">Time</span>
+            <span class="event-detail-value">Half-day · Morning</span>
+          </span>
+        </div>
+        <div class="event-detail">
+          <span class="event-detail-icon" aria-hidden="true">📍</span>
+          <span class="event-detail-copy">
+            <span class="event-detail-label">Venue</span>
+            <span class="event-detail-value">UTS City Campus, Building 11</span>
+            <span class="event-detail-sub">Room CB11.00.405 · Collaborative Lecture Theatre · Sydney, Australia</span>
+          </span>
+        </div>
+        <p class="poster-location"><strong>Poster session:</strong> in the vacant space immediately outside the lecture theatre.</p>
       </div>
     </header>
 
@@ -708,9 +753,10 @@
         <div>Accepted papers</div>
         <div class="nav-button-sub">20 posters</div>
       </a>
-      <a href="#contributions" class="nav-button contributions">
+      <a href="call-for-contributions.html" class="nav-button contributions">
         <div class="nav-button-icon">📄</div>
-        <div>Paper submission</div>
+        <div>Call for contributions</div>
+        <div class="nav-button-sub">Closed</div>
       </a>
       <a href="#contact" class="nav-button contact">
         <div class="nav-button-icon">✉️</div>
@@ -749,69 +795,6 @@
           discussions to help researchers and practitioners make more informed representation choices and to inspire 
           future work on task-aware mapping and perception for autonomous robotic systems.
         </p>
-      </section>
-
-      <section id="contributions">
-        <h2>Call for Contributions</h2>
-        <p>
-          We invite researchers and practitioners from robotics, computer vision, and related fields to share advances in
-          <strong>representation-centric autonomy</strong>: preliminary results, systems insights, and lessons from deployment.
-          Accepted contributions will be featured in the poster session. View the
-          <a href="accepted-papers.html">accepted papers and authors</a>.
-        </p>
-
-        <h3>Submission formats</h3>
-        <p>Formats follow the official RSS 2026 venue.</p>
-        <!-- <ul>
-          <li>Research Papers (up to 6 pages, excl. refs) </li>
-          <li><strong>Field reports / vision papers</strong> — shorter submissions where appropriate </li>
-          <li><strong>Review model</strong> — non-anonymous / single-blind review</li>
-        </ul> -->
-        <div class="cfp-dates">
-          <p> Research Papers (up to 6 pages, excl. refs) </p>
-          <p> Field Reports / Visionary Papers (2–4 pages, excl. refs) </p>
-          <p> Non-anonymous Authors / Single-Bind Review </p>
-        </div>
-
-        <h3>Submission via OpenReview</h3>
-        <p>
-          Submit through the RSS 2026 workshop group on OpenReview. Use your OpenReview account to create or upload submissions and track decisions.
-        </p>
-        <p>
-          <a class="cfp-openreview-link" href="https://openreview.net/group?id=roboticsfoundation.org/RSS/2026/Workshop/From_Perception_to_Action" target="_blank" rel="noopener noreferrer">OpenReview workshop venue →</a>
-        </p>
-        <p style="font-size: 0.95em; color: #555;">
-          If you already manage submissions as an author, you can also open your consoles via the same venue:
-          <a href="https://openreview.net/group?id=roboticsfoundation.org%2FRSS%2F2026%2FWorkshop%2FFrom_Perception_to_Action#tab-your-consoles" target="_blank" rel="noopener noreferrer">Your consoles (OpenReview)</a>.
-        </p>
-
-        <h3>Important dates</h3>
-        <div class="cfp-dates">
-          <p><strong>Submission deadline:</strong> June 10, 2026 AoE </p>
-          <p><strong>Decision notification: </strong> June 26, 2026 AoE </p>
-        </div>
-
-        <h3>Publication and Archiving Policy</h3>
-        <p>
-          This workshop is <strong>non-archival</strong>. Accepted submissions will be invited for poster presentation and may be listed on the workshop website, but they will not be formally published in proceedings. Authors retain the intellectual property of their submissions and may submit extended versions of their work to other venues.
-        </p>
-
-        <!-- <h3>Paper awards</h3>
-        <p>
-          The workshop will recognize outstanding contributions with a <strong>Best Paper Award</strong>.
-        </p> -->
-
-        <h3>Topics of interest</h3>
-        <p>Topics include, but are not limited to:</p>
-        <ul>
-          <li>Representation-aware state estimation</li>
-          <li>Explicit and implicit representations for mapping and localization</li>
-          <li>Hybrid representations combining model-based and data-driven approaches</li>
-          <li>Representation choices for closed-loop decision making</li>
-          <li>Task-aware perception and mapping for planning, navigation, and exploration</li>
-          <li>Scalability and long-term consistency of representations in real-world environments</li>
-          <li>Evaluation of representations based on task-level performance</li>
-        </ul>
       </section>
 
       <section id="speakers">
