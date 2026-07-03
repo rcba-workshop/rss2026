@@ -105,8 +105,8 @@
     
     .event-details {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      max-width: 900px;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.8fr) minmax(0, 1.35fr);
+      max-width: 980px;
       margin: 28px auto 0;
       border: 1px solid #d9e3f2;
       border-radius: 14px;
@@ -127,6 +127,12 @@
 
     .event-detail:nth-child(3) {
       border-right: 0;
+    }
+
+    .venue-detail {
+      gap: 16px;
+      padding-left: 28px;
+      padding-right: 28px;
     }
 
     .event-detail-icon {
@@ -722,10 +728,10 @@
           <span class="event-detail-icon" aria-hidden="true">☀️</span>
           <span class="event-detail-copy">
             <span class="event-detail-label">Time</span>
-            <span class="event-detail-value">8:30-12:30</span>
+            <span class="event-detail-value">8:30 am–12:30 pm</span>
           </span>
         </div>
-        <div class="event-detail">
+        <div class="event-detail venue-detail">
           <span class="event-detail-icon" aria-hidden="true">📍</span>
           <span class="event-detail-copy">
             <span class="event-detail-label">Venue</span>
